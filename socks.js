@@ -63,4 +63,6 @@ const server = net.createServer(clientSocket => {
 	})
 })
 
-server.listen(Number(process.env.PORT || 1080), process.env.HOST, () => console.log(`SOCKS5 proxy server listening on port ${process.env.PORT || 1080}`))
+if (!process.env.PORT) throw new Error('PORT not specified')
+if (process.env.HOST) server.listen(Number(process.env.PORT), process.env.HOST, () => console.log(`SOCKS5 proxy server listening on port ${process.env.PORT}`))
+else server.listen(Number(process.env.PORT), () => console.log(`SOCKS5 proxy server listening on port ${process.env.PORT}`))

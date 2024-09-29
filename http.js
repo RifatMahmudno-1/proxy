@@ -73,4 +73,6 @@ server.on('connect', (req, clientSocket, head) => {
 	clientSocket.on('error', err => console.error('Client socket error:', err))
 })
 
-server.listen(Number(process.env.PORT), process.env.HOST, () => console.log(`HTTP proxy server is running on port ${process.env.PORT}`))
+if (!process.env.PORT) throw new Error('PORT not specified')
+if (process.env.HOST) server.listen(Number(process.env.PORT), process.env.HOST, () => console.log(`HTTP proxy server listening on port ${process.env.PORT}`))
+else server.listen(Number(process.env.PORT), () => console.log(`HTTP proxy server listening on port ${process.env.PORT}`))
