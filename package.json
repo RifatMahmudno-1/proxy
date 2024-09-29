@@ -1,0 +1,10 @@
+{
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"dev:http": "node --env-file=.env --watch http.js",
+		"dev:socks": "node --env-file=.env --watch socks.js",
+		"start:http": "node --env-file=.env http.js",
+		"start:socks": "node --env-file=.env socks.js"
+	}
+}
